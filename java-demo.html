@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        .demo-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        /* Bulb styling using pure CSS shapes */
+        .bulb {
+            width: 80px;
+            height: 80px;
+            background-color: #7f8c8d; /* Off state (grey) */
+            border-radius: 50%;
+            margin: 20px auto;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Class added dynamically by JavaScript when turned on */
+        .bulb.light-on {
+            background-color: #f1c40f; /* On state (yellow) */
+            box-shadow: 0 0 30px #f1c40f;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #text-display {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Basic JavaScript Demonstration</h1>
+    <p>Interaction happening entirely on the client side (browser).</p>
+
+    <div class="demo-container">
+        <h3>1. Interactive Light Bulb</h3>
+        <div id="lightBulb" class="bulb"></div>
+        <button onclick="toggleLight()">Switch Light</button>
+    </div>
+
+    <div class="demo-container">
+        <h3>2. Dynamic Content</h3>
+        <p id="text-display">Original Text</p>
+        <button onclick="changeText()">Change Text</button>
+    </div>
+
+    <script>
+        // Track the current state of the light
+        let isLightOn = false;
+
+        function toggleLight() {
+            // Get the HTML element representing the bulb
+            const bulbElement = document.getElementById('lightBulb');
+            
+            // Toggle the state variable
+            isLightOn = !isLightOn;
+
+            // Apply modifications based on state
+            if (isLightOn) {
+                bulbElement.classList.add('light-on');
+            } else {
+                bulbElement.classList.remove('light-on');
+            }
+        }
+
+        function changeText() {
+            const textElement = document.getElementById('text-display');
+            
+            // Basic conditional text switching
+            if (textElement.innerHTML === "Original Text") {
+                textElement.innerHTML = "✨ Hello from JavaScript! ✨";
+                textElement.style.color = "#27ae60"; // Change style inline
+            } else {
+                textElement.innerHTML = "Original Text";
+                textElement.style.color = "#2c3e50";
+            }
+        }
+    </script>
+
+</body>
+</html>
